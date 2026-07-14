@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <div class="filter-group">
+        <a href="?filter=all" class="filter-btn">Всі</a>
+        <a href="?filter=active" class="filter-btn">Активні</a>
+        <a href="?filter=done" class="filter-btn">Виконані</a>
+    </div>
+    
+    <a href="{% url 'task_create' %}" class="btn">Додати завдання</a>
+</div>
+
+    <table style="width: 100%; border-collapse: collapse;">
+        {% for task in tasks %}
+        <tr style="border-bottom: 1px solid #eee;">
+            <td style="padding: 10px;">{{ task.title }}</td>
+            <td style="padding: 10px;">{% if task.done %}✅ Виконано{% else %}⏳ Активно{% endif %}</td>
+            <td style="padding: 10px;">
+                <a href="{% url 'toggle_task' task.id %}">Змінити статус</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

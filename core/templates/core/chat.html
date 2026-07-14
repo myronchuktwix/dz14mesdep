@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/messages.css' %}">
+
+<h2>Чат з {{ other_user.username }}</h2>
+
+<div class="chat-box">
+    {% for msg in messages %}
+    <div class="{% if msg.sender == request.user %}my-msg{% else %}other-msg{% endif %}">
+        <strong>{% if msg.sender == request.user %}Ви{% else %}{{ msg.sender.username }}{% endif %}:</strong>
+        <p>{{ msg.text }}</p>
+        <small>{{ msg.created_at|date:"d.m H:i" }}</small>
+    </div>
+    {% endfor %}
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <textarea name="text" required placeholder="Ваше повідомлення..."></textarea>
+    <button type="submit">Надіслати</button>
+</form>
+
+<a href="{% url 'inbox' %}">До списку діалогів</a>
+{% endblock %}

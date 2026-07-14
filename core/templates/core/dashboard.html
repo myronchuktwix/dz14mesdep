@@ -1,0 +1,7 @@
+{% extends 'core/base.html' %}
+{% block content %}
+    <h1>Привіт, {{ user.first_name }}!</h1>
+    <p>Всього завдань: {{ stats.total }}</p>
+    <p>Виконано: {{ stats.done }}</p>
+    <p>Залишилось: {{ stats.active }}</p>
+{% endblock %}

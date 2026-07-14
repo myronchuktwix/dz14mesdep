@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Ваш профіль</h2>
+    
+    <div style="background: #f9f9f9; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <p><strong>Ім'я:</strong> {{ user.first_name }}</p>
+        <p><strong>Прізвище:</strong> {{ user.last_name }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>Про себе:</strong> {{ user.profile.bio }}</p>
+    </div>
+
+    <hr>
+
+    <h3>Редагування даних</h3>
+    <form method="POST">
+        {% csrf_token %}
+        {{ p_form.as_p }}
+        {{ b_form.as_p }}
+        <button type="submit" class="btn">Зберегти зміни</button>
+    </form>
+</div>
+{% endblock %}

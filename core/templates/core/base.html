@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+    <a href="{% url 'dashboard' %}">Головна</a>
+    <a href="{% url 'tasks' %}">Завдання</a>
+    <a href="{% url 'profile' %}">Профіль</a>
+    <a href="{% url 'inbox' %}">Повідомлення</a>
+    <a href="{% url 'logout' %}" style="float: right;">Вийти</a>
+    </nav>
+    <div class="card">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

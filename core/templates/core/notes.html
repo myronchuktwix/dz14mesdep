@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Список завдань</h2>
+<div class="filters">
+    <a href="?filter=all">Всі</a>
+    <a href="?filter=active">Активні</a>
+    <a href="?filter=done">Виконані</a>
+</div>
+<ul>
+    {% for note in notes %}
+    <li class="note-item">
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        <form method="post">{% csrf_token %}
+            <button type="submit" name="done" value="{{ note.id }}">Виконано</button>
+            <button type="submit" name="delete" value="{{ note.id }}">Видалити</button>
+        </form>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,22 @@
+.chat-box {
+    border: 1px solid #ccc;
+    padding: 10px;
+    height: 300px;
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.my-msg {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.other-msg {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.inbox-item {
+    border-bottom: 1px solid #eee;
+    padding: 10px;
+}

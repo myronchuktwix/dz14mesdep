@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+{% block content %}
+<h2>Ваші діалоги</h2>
+<a href="{% url 'user_list' %}">Новий діалог</a>
+
+<div class="inbox-list">
+    {% for dialog in dialogs %}
+    <div style="border-bottom: 1px solid #eee; padding: 10px;">
+        <a href="{% url 'chat' dialog.partner.id %}">
+            <strong>{{ dialog.partner.username }}</strong>
+        </a>
+        <p>{{ dialog.last_message.text|truncatechars:50 }}</p>
+        <small>{{ dialog.last_message.created_at|date:"d.m H:i" }}</small>
+    </div>
+    {% empty %}
+    <p>У вас ще немає переписок.</p>
+    {% endfor %}
+</div>
+{% endblock %}

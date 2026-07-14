@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Створити нове завдання</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Створити</button>
+        <a href="{% url 'tasks' %}">Скасувати</a>
+    </form>
+</div>
+{% endblock %}
